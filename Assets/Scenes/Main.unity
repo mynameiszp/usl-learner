@@ -214,7 +214,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1264956534
+--- !u!1001 &1233837547
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6485908278210481877, guid: 3ad84a1a692974df2a0d315b5004ff1f, type: 3}
       propertyPath: m_Name
-      value: Dictionary
+      value: Dictionary Window
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -345,4 +345,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1299794906}
-  - {fileID: 1264956534}
+  - {fileID: 1233837547}
