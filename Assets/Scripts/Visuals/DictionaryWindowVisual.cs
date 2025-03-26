@@ -13,23 +13,25 @@ public class DictionaryWindowVisual : MonoBehaviour
     [SerializeField]
     private TMP_InputField inputText;
     [SerializeField]
+    private TMP_Text signName;
+    [SerializeField]
     private TMP_Dropdown languageDropdown;
 
-    private string chosenLanguage;
-
-    private LanguageList supportedLanguages;
-
     [Inject] private GoogleTranslateService translatorService;
+    private int chosenLanguageIndex;
+    private LanguageList supportedLanguages;
+    private const string DEFAULT_LANG_CODE = "uk";
 
     private void Start()
     {
+        signName.text = "";
         enterButton.onClick.AddListener(Translate);
         languageDropdown.onValueChanged.AddListener(OnLanguageValueChanged);
         InitLanguageDropdown();
 
         void OnLanguageValueChanged(int index)
         {
-            chosenLanguage = languageDropdown.options[index].text;
+            chosenLanguageIndex = index;
         }
     }
 
@@ -43,19 +45,37 @@ public class DictionaryWindowVisual : MonoBehaviour
             languageDropdown.ClearOptions();
             List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
 
-            foreach (var lang in supportedLanguages.data.languages)
+            int defaultIndex = 0; 
+            for (int i = 0; i < supportedLanguages.data.languages.Length; i++)
             {
+                var lang = supportedLanguages.data.languages[i];
                 options.Add(new TMP_Dropdown.OptionData(lang.name));
+
+                if (lang.language == DEFAULT_LANG_CODE)
+                    defaultIndex = i;
             }
             languageDropdown.AddOptions(options);
+            languageDropdown.value = defaultIndex;
+            languageDropdown.RefreshShownValue(); 
         }
     }
 
     private void Translate()
     {
-        translatorService.TranslateText(inputText.text, chosenLanguage);
-    }
+        string srcLang = supportedLanguages.data.languages[chosenLanguageIndex].language;
+        if (srcLang == DEFAULT_LANG_CODE)
+        {
+            SetSignName(inputText.text);
+            return;
+        }
+        translatorService.TranslateText(inputText.text, srcLang, SetSignName);
 
+        void SetSignName(string result)
+        {
+            string name = $"\"{result}\"";
+            signName.text = name;
+        }
+    }
 
     private void OnDestroy()
     {

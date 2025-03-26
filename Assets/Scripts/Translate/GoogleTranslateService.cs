@@ -5,24 +5,29 @@ using UnityEngine.Networking;
 
 public class GoogleTranslateService : MonoBehaviour
 {
-    private const string apiKey = APIKeys.TRANSLATE_API_KEY;
+    private const string API_KEY = APIKeys.TRANSLATE_API_KEY;
+    private const string DEFAULT_LANG_CODE = "uk";
 
-    public void TranslateText(string textToTranslate, string targetLanguage)
+    public void TranslateText(string textToTranslate, string sourceLanguage, Action<string> callback)
     {
-        string url = $"https://translation.googleapis.com/language/translate/v2?key={apiKey}";
+        string url = $"https://translation.googleapis.com/language/translate/v2?key={API_KEY}";
 
         TranslationRequest requestData = new TranslationRequest()
         {
             q = textToTranslate,
-            target = targetLanguage
+            target = DEFAULT_LANG_CODE,
+            source = sourceLanguage
         };
 
-        StartCoroutine(SendTranslationRequest(url, requestData));
+        Debug.Log("sourceLanguage " + sourceLanguage);
+
+
+        StartCoroutine(SendTranslationRequest(url, requestData, callback));
     }
 
     public void GetSupportedLanguages(Action<LanguageList> callback)
     {
-        string url = $"https://translation.googleapis.com/language/translate/v2/languages?key={apiKey}&target=uk";
+        string url = $"https://translation.googleapis.com/language/translate/v2/languages?key={API_KEY}&target=uk";
         StartCoroutine(FetchSupportedLanguages(url, callback));
     }
 
@@ -44,8 +49,9 @@ public class GoogleTranslateService : MonoBehaviour
         callback?.Invoke(languageList);
     }
 
-    private IEnumerator SendTranslationRequest(string url, TranslationRequest data)
+    private IEnumerator SendTranslationRequest(string url, TranslationRequest data, Action<string> callback)
     {
+        string result = "вибачте, сталася помилка";
         string jsonData = JsonUtility.ToJson(data);
         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
 
@@ -59,55 +65,13 @@ public class GoogleTranslateService : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             TranslationResponse response = JsonUtility.FromJson<TranslationResponse>(request.downloadHandler.text);
+            result = response.data.translations[0].translatedText;
             Debug.Log("Translated Text: " + response.data.translations[0].translatedText);
         }
         else
         {
             Debug.LogError("Translation Error: " + request.downloadHandler.text);
         }
+        callback?.Invoke(result);
     }
-}
-
-[Serializable]
-public class TranslationRequest
-{
-    public string q;       // Text to translate
-    public string target;  // Target language code (e.g., "fr" for French)
-}
-
-[Serializable]
-public class TranslationResponse
-{
-    public TranslationData data;
-}
-
-[Serializable]
-public class TranslationData
-{
-    public Translation[] translations;
-}
-
-[Serializable]
-public class Translation
-{
-    public string translatedText;
-}
-
-[Serializable]
-public class LanguageList
-{
-    public Data data;
-}
-
-[Serializable]
-public class Data
-{
-    public Language[] languages;
-}
-
-[Serializable]
-public class Language
-{
-    public string language;
-    public string name;
 }
