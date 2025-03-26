@@ -13,7 +13,7 @@ public class DictionaryWindowVisual : MonoBehaviour
     [SerializeField]
     private TMP_InputField inputText;
     [SerializeField]
-    private TMP_Text signName;
+    private TMP_Text resultText;
     [SerializeField]
     private TMP_Dropdown languageDropdown;
 
@@ -24,7 +24,7 @@ public class DictionaryWindowVisual : MonoBehaviour
 
     private void Start()
     {
-        signName.text = "";
+        resultText.text = "";
         enterButton.onClick.AddListener(Translate);
         languageDropdown.onValueChanged.AddListener(OnLanguageValueChanged);
         InitLanguageDropdown();
@@ -73,7 +73,7 @@ public class DictionaryWindowVisual : MonoBehaviour
         void SetSignName(string result)
         {
             string name = $"\"{result}\"";
-            signName.text = name;
+            resultText.text = name;
         }
     }
 
