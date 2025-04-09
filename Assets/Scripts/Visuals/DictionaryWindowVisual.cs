@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using Zenject;
 using System.Collections.Generic;
+using Spine.Unity;
 
 public class DictionaryWindowVisual : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class DictionaryWindowVisual : MonoBehaviour
     private TMP_Text resultText;
     [SerializeField]
     private TMP_Dropdown languageDropdown;
+    [SerializeField]
+    private SkeletonAnimation handAnimation;
 
     [Inject] private GoogleTranslateService translatorService;
     private int chosenLanguageIndex;
@@ -24,6 +27,7 @@ public class DictionaryWindowVisual : MonoBehaviour
 
     private void Start()
     {
+        handAnimation.gameObject.SetActive(false);
         resultText.text = "";
         enterButton.onClick.AddListener(Translate);
         languageDropdown.onValueChanged.AddListener(OnLanguageValueChanged);
@@ -65,15 +69,17 @@ public class DictionaryWindowVisual : MonoBehaviour
         string srcLang = supportedLanguages.data.languages[chosenLanguageIndex].language;
         if (srcLang == DEFAULT_LANG_CODE)
         {
-            SetSignName(inputText.text);
+            DisplayResult(inputText.text);
             return;
         }
-        translatorService.TranslateText(inputText.text, srcLang, SetSignName);
+        translatorService.TranslateText(inputText.text, srcLang, DisplayResult);
 
-        void SetSignName(string result)
+        void DisplayResult(string result)
         {
             string name = $"\"{result}\"";
             resultText.text = name;
+            handAnimation.AnimationName = result;
+            handAnimation.gameObject.SetActive(true);
         }
     }
 

@@ -450,7 +450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1759085948622653471, guid: 4b8c034da8e624cf9b54830deb2b4e41, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2108971210250826307, guid: 4b8c034da8e624cf9b54830deb2b4e41, type: 3}
       propertyPath: m_Name
@@ -472,6 +472,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 8438323704535282448, guid: 4b8c034da8e624cf9b54830deb2b4e41, type: 3}
+      propertyPath: handAnimation
+      value: 
+      objectReference: {fileID: 1949538859}
     - target: {fileID: 8856097382387303672, guid: 4b8c034da8e624cf9b54830deb2b4e41, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -770,7 +774,7 @@ MonoBehaviour:
     materialsInsideMask: []
     materialsOutsideMask: []
   disableRenderingOnOverride: 1
-  _animationName: tap_3
+  _animationName: idle
   loop: 1
   timeScale: 1
 --- !u!23 &1949538860
