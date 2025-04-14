@@ -76,10 +76,19 @@ public class DictionaryWindowVisual : MonoBehaviour
 
         void DisplayResult(string result)
         {
-            string name = $"\"{result}\"";
-            resultText.text = name;
-            handAnimation.AnimationName = result;
-            handAnimation.gameObject.SetActive(true);
+            if (handAnimation.skeleton.Data.FindAnimation(result) != null)
+            {
+                string name = $"\"{result}\"";
+                resultText.text = name;
+                handAnimation.AnimationState.SetAnimation(0, result, true);
+                handAnimation.gameObject.SetActive(true);
+            }
+            else
+            {
+                resultText.text = "No such animation";//"?? ????, ? ??? ????? ???? ????????";
+                handAnimation.AnimationState.SetEmptyAnimation(0, 0);
+                handAnimation.gameObject.SetActive(false);
+            }
         }
     }
 
