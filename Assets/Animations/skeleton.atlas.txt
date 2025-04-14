@@ -1,0 +1,34 @@
+
+skeleton.png
+size: 1956,1540
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+side right
+  rotate: false
+  xy: 1088, 2
+  size: 866, 560
+  orig: 866, 560
+  offset: 0, 0
+  index: -1
+up left
+  rotate: true
+  xy: 2, 121
+  size: 580, 1084
+  orig: 580, 1084
+  offset: 0, 0
+  index: -1
+up right
+  rotate: false
+  xy: 1228, 564
+  size: 686, 974
+  orig: 686, 974
+  offset: 0, 0
+  index: -1
+woman face
+  rotate: true
+  xy: 2, 703
+  size: 835, 1224
+  orig: 835, 1224
+  offset: 0, 0
+  index: -1
