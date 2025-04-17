@@ -64,57 +64,30 @@ public class DataService  {
 
 	}
 
-	public void CreateDB(){
-		_connection.DropTable<Person> ();
-		_connection.CreateTable<Person> ();
-
-		_connection.InsertAll (new[]{
-			new Person{
-				Id = 1,
-				Name = "Tom",
-				Surname = "Perez",
-				Age = 56
-			},
-			new Person{
-				Id = 2,
-				Name = "Fred",
-				Surname = "Arthurson",
-				Age = 16
-			},
-			new Person{
-				Id = 3,
-				Name = "John",
-				Surname = "Doe",
-				Age = 25
-			},
-			new Person{
-				Id = 4,
-				Name = "Roberto",
-				Surname = "Huertas",
-				Age = 37
-			}
-		});
+	public void CreateTable<T>(){
+		_connection.DropTable<T> ();
+		_connection.CreateTable<T> ();
 	}
 
-	public IEnumerable<Person> GetPersons(){
-		return _connection.Table<Person>();
+	public IEnumerable<T> GetAll<T>() where T: class, new(){
+		return _connection.Table<T>();
 	}
 
-	public IEnumerable<Person> GetPersonsNamedRoberto(){
-		return _connection.Table<Person>().Where(x => x.Name == "Roberto");
+	public T Get<T>(int id) where T : BaseModel, new()
+	{
+		return _connection.Table<T>().Where(x => x.Id == id).FirstOrDefault();
 	}
 
-	public Person GetJohnny(){
-		return _connection.Table<Person>().Where(x => x.Name == "Johnny").FirstOrDefault();
+	public T Insert<T>(T model){
+		_connection.Insert(model);
+		return model;
 	}
 
-	public Person CreatePerson(){
-		var p = new Person{
-				Name = "Johnny",
-				Surname = "Mnemonic",
-				Age = 21
-		};
-		_connection.Insert (p);
-		return p;
+	public void Delete<T>(T model){
+		_connection.Delete(model);
+	}
+
+	public void Modify<T>(T model){
+		_connection.Update(model);
 	}
 }
