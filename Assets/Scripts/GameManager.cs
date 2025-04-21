@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
         dBController.CreateTable<CustomDictionary>();
         dBController.CreateTable<Word>();
         dBController.CreateTable<DictionaryWord>();
+        dBController.CreateTable<SynonymPair>();
+        dBController.CreateTable<AntonymPair>();
         Debug.Log("Created all");
         dBController.Insert(new CustomDictionary("Dictionary1"));
         Debug.Log("Inserted all");

@@ -253,6 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1364266047954894290}
+  - component: {fileID: 1596836717507723741}
   m_Layer: 0
   m_Name: Main Window
   m_TagString: Untagged
@@ -276,6 +277,19 @@ Transform:
   - {fileID: 4223920633318971833}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1596836717507723741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005944997323019478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a58fe27434e416e99ba388e317bbce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windows: []
 --- !u!1001 &647326610983473659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -386,6 +400,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2033962213234851012}
     m_Modifications:
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 9108805462936424160}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1596836717507723741}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIWindowManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: dictionary
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6839394222330672435, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
       propertyPath: m_Name
       value: MenuButton (1)
@@ -480,6 +530,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8492535037221822126, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
   m_PrefabInstance: {fileID: 2031489628759152946}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9108805462936424160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7086896987259459538, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+  m_PrefabInstance: {fileID: 2031489628759152946}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3525870148520295393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -590,6 +651,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2033962213234851012}
     m_Modifications:
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1596836717507723741}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIWindowManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: main
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118093642098021602, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6839394222330672435, guid: b0724c671be4242e79e4213ee40e246e, type: 3}
       propertyPath: m_Name
       value: MenuButton
