@@ -9,6 +9,15 @@ public class DependencyInstaller : MonoInstaller
     [SerializeField]
     private DBController dBController;
 
+    [SerializeField]
+    private UIWindowManager uiWindowManager;
+
+    [SerializeField]
+    private GameplayManager gameplayManager;
+    
+    [SerializeField]
+    private LevelSettings levelSettings;
+
     public override void InstallBindings()
     {
         Container.Bind<GoogleTranslateService>()
@@ -17,6 +26,18 @@ public class DependencyInstaller : MonoInstaller
 
         Container.Bind<DBController>()
             .FromInstance(dBController)
+            .AsSingle();
+
+        Container.Bind<UIWindowManager>()
+            .FromInstance(uiWindowManager)
+            .AsSingle();
+
+        Container.Bind<GameplayManager>()
+            .FromInstance(gameplayManager)
+            .AsSingle();
+
+        Container.Bind<LevelSettings>()
+            .FromInstance(levelSettings)
             .AsSingle();
     }
 }
