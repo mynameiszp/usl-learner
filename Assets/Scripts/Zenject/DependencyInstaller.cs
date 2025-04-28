@@ -17,6 +17,8 @@ public class DependencyInstaller : MonoInstaller
     
     [SerializeField]
     private LevelSettings levelSettings;
+    [SerializeField]
+    private BlocksGenerator blocksGenerator;
 
     public override void InstallBindings()
     {
@@ -38,6 +40,10 @@ public class DependencyInstaller : MonoInstaller
 
         Container.Bind<LevelSettings>()
             .FromInstance(levelSettings)
+            .AsSingle();
+
+        Container.Bind<BlocksGenerator>()
+            .FromInstance(blocksGenerator)
             .AsSingle();
     }
 }
