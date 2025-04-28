@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BlocksGenerator : MonoBehaviour, IGenerator
 {
     [Inject] private readonly LevelSettings levelSettings;
+    [Inject] private DiContainer _diContainer;
     [Header("Block config")]
     [SerializeField] private Transform parent;
     [SerializeField] private LevelsGenerator blockPrefab;
@@ -21,8 +22,8 @@ public class BlocksGenerator : MonoBehaviour, IGenerator
 
         for (int i = 0; i < levelSettings.blockConfigs.Count; i++)
         {
-            var blockObj = Instantiate(blockPrefab, Vector3.zero, Quaternion.identity, parent);
-            blockObj.Initialize(levelSettings, i, levelsParent, levelPrefab);
+            var blockObj = _diContainer.InstantiatePrefab(blockPrefab, parent).GetComponent<LevelsGenerator>();
+            blockObj.Initialize(i, levelsParent, levelPrefab);
             blocks.Add(blockObj);
 
             blockObj.GetComponent<Button>().onClick.AddListener(() => GenerateLevels(blockObj));

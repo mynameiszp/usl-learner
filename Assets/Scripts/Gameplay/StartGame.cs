@@ -4,14 +4,14 @@ using Zenject;
 public class StartGame : MonoBehaviour
 {
     [Inject] private GameplayManager gpManager;
-    private int levelNumber;
+    private LevelConfig lvlConfig;
 
-    public void Initialize(int lvlNumber)
+    public void Initialize(LevelConfig config)
     {
-        levelNumber = lvlNumber;
+        lvlConfig = config;
     }
 
     public void StartLevel(){
-        gpManager.StartLevel(levelNumber);
+        gpManager.StartLevel(lvlConfig);
     }
 }

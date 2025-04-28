@@ -294,6 +294,17 @@ MonoBehaviour:
     id: main
   - window: {fileID: 0}
     id: dictionary
+  - window: {fileID: 0}
+    id: intro
+  - window: {fileID: 0}
+    id: buttons_trans
+  - window: {fileID: 0}
+    id: enter_trans
+  popups:
+  - window: {fileID: 0}
+    id: success
+  - window: {fileID: 0}
+    id: fail
 --- !u!1001 &647326610983473659
 PrefabInstance:
   m_ObjectHideFlags: 0
