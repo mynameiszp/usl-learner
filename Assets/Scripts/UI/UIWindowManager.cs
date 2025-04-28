@@ -32,6 +32,14 @@ public class UIWindowManager : MonoBehaviour
         var popup = popups.Find(popup => popup.id == id);
         popup.window.SetActive(false);
     } 
+
+    public GameObject GetActiveWindow(){
+        return windows.Find(w => w.window.activeSelf == true).window;
+    } 
+
+    public GameObject GetWindow(string id){
+        return windows.Find(w => w.id == id).window;
+    } 
 }
 
 [Serializable]

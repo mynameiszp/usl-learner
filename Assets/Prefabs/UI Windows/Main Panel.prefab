@@ -245,7 +245,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8585268369856102877}
   m_HandleRect: {fileID: 4929386691636379689}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -615,7 +615,6 @@ GameObject:
   - component: {fileID: 7150391350056235006}
   - component: {fileID: 8903202648363041095}
   - component: {fileID: 839164039313903338}
-  - component: {fileID: 7541961627463434063}
   - component: {fileID: 2341648889692702423}
   m_Layer: 5
   m_Name: Main Panel
@@ -684,24 +683,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7541961627463434063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3095971170654454196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f6b85f264a3d4ba1a6b7a20c5cdb434, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enterButton: {fileID: 0}
-  voiceButton: {fileID: 0}
-  inputText: {fileID: 0}
-  resultText: {fileID: 0}
-  languageDropdown: {fileID: 0}
-  handAnimation: {fileID: 0}
 --- !u!114 &2341648889692702423
 MonoBehaviour:
   m_ObjectHideFlags: 0
