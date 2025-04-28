@@ -1036,6 +1036,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7136907717070787170, guid: d7c153052258d4f19857517f4d112673, type: 3}
+      propertyPath: handAnimation
+      value: 
+      objectReference: {fileID: 1949538859}
     - target: {fileID: 7946719073062683204, guid: d7c153052258d4f19857517f4d112673, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
