@@ -20,6 +20,12 @@ public class DependencyInstaller : MonoInstaller
     [SerializeField]
     private BlocksGenerator blocksGenerator;
 
+    [SerializeField]
+    private ApiClient apiClient;
+
+    [SerializeField]
+    private ApiManager apiManager;
+
     public override void InstallBindings()
     {
         Container.Bind<GoogleTranslateService>()
@@ -44,6 +50,14 @@ public class DependencyInstaller : MonoInstaller
 
         Container.Bind<BlocksGenerator>()
             .FromInstance(blocksGenerator)
+            .AsSingle();
+
+        Container.Bind<ApiClient>()
+            .FromInstance(apiClient)
+            .AsSingle();
+
+        Container.Bind<ApiManager>()
+            .FromInstance(apiManager)
             .AsSingle();
     }
 }

@@ -19,7 +19,7 @@ public class EnterTranslationGameplayWindow : BasicGameplayWindow
     }
 
     private void CheckAnswer(){
-        if (inputText.text.Trim() == word) //check for synonyms??
+        if (inputText.text.Trim().ToLower() == word) //check for synonyms??
         {
             failText.gameObject.SetActive(false);
             continueBut.gameObject.SetActive(true);

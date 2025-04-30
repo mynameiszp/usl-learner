@@ -314,11 +314,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translateService: {fileID: 1856293927}
-  dBController: {fileID: 1856293928}
+  dBController: {fileID: 0}
   uiWindowManager: {fileID: 1082471705}
   gameplayManager: {fileID: 1856293930}
   levelSettings: {fileID: 11400000, guid: 5d420e25876c14feda6692c2431f1ae9, type: 2}
   blocksGenerator: {fileID: 1865014545}
+  apiClient: {fileID: 1856293932}
+  apiManager: {fileID: 1856293933}
 --- !u!4 &773646593
 Transform:
   m_ObjectHideFlags: 0
@@ -492,6 +494,10 @@ PrefabInstance:
     - target: {fileID: 6968399682383615524, guid: 4b8c034da8e624cf9b54830deb2b4e41, type: 3}
       propertyPath: m_LocalPosition.z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825991137486076808, guid: 4b8c034da8e624cf9b54830deb2b4e41, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.539978
       objectReference: {fileID: 0}
     - target: {fileID: 8438323704535282448, guid: 4b8c034da8e624cf9b54830deb2b4e41, type: 3}
       propertyPath: handAnimation
@@ -793,9 +799,10 @@ GameObject:
   - component: {fileID: 1856293926}
   - component: {fileID: 1856293925}
   - component: {fileID: 1856293927}
-  - component: {fileID: 1856293928}
-  - component: {fileID: 1856293929}
   - component: {fileID: 1856293930}
+  - component: {fileID: 1856293931}
+  - component: {fileID: 1856293932}
+  - component: {fileID: 1856293933}
   m_Layer: 0
   m_Name: Services
   m_TagString: Untagged
@@ -842,30 +849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd83e1cb9a32463a88131def64a8f3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1856293928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856293923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5159837345041db86a6356c3afbaaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1856293929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856293923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b99b6ee2e0d344f4886f240acb0d4c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1856293930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,6 +859,53 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4263bf75fd1c4cb69d9380d3aadd304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1856293931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856293923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed94e09dea55b44a794fab1e66da5696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverData:
+    Dictionaries: []
+    Words: []
+    Levels: []
+    LevelWords: []
+  playerData:
+    id: 0
+    userId: 
+    name: 
+    curLevel: 0
+    score: 0
+--- !u!114 &1856293932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856293923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b905c4ddc0a4c3daf391230ba6ef87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1856293933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856293923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ce272f08d7645afa256b5f523d7f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1865014545 stripped
@@ -1036,6 +1066,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -36.999634
       objectReference: {fileID: 0}
+    - target: {fileID: 5034917901553910313, guid: d7c153052258d4f19857517f4d112673, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.09991455
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034917901553910313, guid: d7c153052258d4f19857517f4d112673, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.7854004
+      objectReference: {fileID: 0}
     - target: {fileID: 7001424423005889280, guid: d7c153052258d4f19857517f4d112673, type: 3}
       propertyPath: m_Name
       value: Enter Translation Level
@@ -1161,10 +1199,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1344634226}
     m_Modifications:
+    - target: {fileID: 3326344996178900956, guid: bc5a2389d6d37430e8c7a3ddc2912a94, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.45568848
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326344996178900956, guid: bc5a2389d6d37430e8c7a3ddc2912a94, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.2128906
+      objectReference: {fileID: 0}
     - target: {fileID: 8100766335271800140, guid: bc5a2389d6d37430e8c7a3ddc2912a94, type: 3}
       propertyPath: handAnimation
       value: 
       objectReference: {fileID: 1949538859}
+    - target: {fileID: 8891336637565491085, guid: bc5a2389d6d37430e8c7a3ddc2912a94, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.13946533
+      objectReference: {fileID: 0}
     - target: {fileID: 8956910132518680602, guid: bc5a2389d6d37430e8c7a3ddc2912a94, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2232,6 +2282,10 @@ PrefabInstance:
     - target: {fileID: 3332046221953180104, guid: a0d17bc3ce924405982b488c59043765, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519965698521668849, guid: a0d17bc3ce924405982b488c59043765, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.25091553
       objectReference: {fileID: 0}
     - target: {fileID: 3563419172457633231, guid: a0d17bc3ce924405982b488c59043765, type: 3}
       propertyPath: m_Size

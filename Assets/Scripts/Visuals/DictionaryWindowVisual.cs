@@ -69,7 +69,7 @@ public class DictionaryWindowVisual : MonoBehaviour
         string srcLang = supportedLanguages.data.languages[chosenLanguageIndex].language;
         if (srcLang == DEFAULT_LANG_CODE)
         {
-            DisplayResult(inputText.text);
+            DisplayResult(inputText.text.ToLower());
             return;
         }
         translatorService.TranslateText(inputText.text, srcLang, DisplayResult);
