@@ -321,6 +321,7 @@ MonoBehaviour:
   blocksGenerator: {fileID: 1865014545}
   apiClient: {fileID: 1856293932}
   apiManager: {fileID: 1856293933}
+  dbManager: {fileID: 1856293931}
 --- !u!4 &773646593
 Transform:
   m_ObjectHideFlags: 0
@@ -880,9 +881,9 @@ MonoBehaviour:
     LevelWords: []
   playerData:
     id: 0
-    userId: 
+    userid: 
     name: 
-    curLevel: 0
+    curlevel: 0
     score: 0
 --- !u!114 &1856293932
 MonoBehaviour:

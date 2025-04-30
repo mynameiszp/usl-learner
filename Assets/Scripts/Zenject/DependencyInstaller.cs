@@ -26,10 +26,25 @@ public class DependencyInstaller : MonoInstaller
     [SerializeField]
     private ApiManager apiManager;
 
+    [SerializeField]
+    private DatabaseManager dbManager;
+
     public override void InstallBindings()
     {
         Container.Bind<GoogleTranslateService>()
             .FromInstance(translateService)
+            .AsSingle();
+
+        Container.Bind<ApiClient>()
+            .FromInstance(apiClient)
+            .AsSingle();
+
+        Container.Bind<ApiManager>()
+            .FromInstance(apiManager)
+            .AsSingle();
+
+        Container.Bind<DatabaseManager>()
+            .FromInstance(dbManager)
             .AsSingle();
 
         Container.Bind<DBController>()
@@ -50,14 +65,6 @@ public class DependencyInstaller : MonoInstaller
 
         Container.Bind<BlocksGenerator>()
             .FromInstance(blocksGenerator)
-            .AsSingle();
-
-        Container.Bind<ApiClient>()
-            .FromInstance(apiClient)
-            .AsSingle();
-
-        Container.Bind<ApiManager>()
-            .FromInstance(apiManager)
             .AsSingle();
     }
 }

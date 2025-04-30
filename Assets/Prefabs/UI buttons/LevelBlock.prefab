@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf35dcbe4ab7f449c8fe10fb2f42b969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
-  levelPrefab: {fileID: 0}
+  blockName: {fileID: 2359516590088467112}
+  blockId: 0
 --- !u!1 &6643678803290020251
 GameObject:
   m_ObjectHideFlags: 0

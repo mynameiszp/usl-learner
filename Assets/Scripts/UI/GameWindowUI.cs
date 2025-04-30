@@ -5,7 +5,7 @@ public class GameWindowUI : MonoBehaviour
 {
     [Inject] private BlocksGenerator blocksGenerator;
 
-    void Awake()
+    void Start()
     {
         blocksGenerator.Generate();
     }
