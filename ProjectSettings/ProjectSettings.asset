@@ -446,7 +446,7 @@ PlayerSettings:
   enableCrashReportAPI: 0
   cameraUsageDescription: 
   locationUsageDescription: 
-  microphoneUsageDescription: 
+  microphoneUsageDescription: micro
   bluetoothUsageDescription: 
   macOSTargetOSVersion: 10.13.0
   switchNMETAOverride: 
