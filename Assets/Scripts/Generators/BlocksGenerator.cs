@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BlocksGenerator : MonoBehaviour, IGenerator
 {
-    [Inject] private readonly LevelSettings levelSettings;
     [Inject] private readonly DatabaseManager dbManager;
     [Inject] private DiContainer _diContainer;
     [Header("Block config")]

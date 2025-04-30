@@ -1,12 +1,15 @@
 using UnityEngine;
 using TMPro;
-using System.Collections.Generic;
+using Zenject;
+using System.Linq;
+using System;
 
 public class ChooseTranslationGameplayWindow : BasicGameplayWindow
 {
     [SerializeField] private TMP_Text[] options;
     [SerializeField] private TMP_Text failText;
     [SerializeField] private GameObject buttons;
+    [Inject] private readonly DatabaseManager dbManager;
     private int correctOption;
 
     public override void SetVisual()
@@ -20,10 +23,16 @@ public class ChooseTranslationGameplayWindow : BasicGameplayWindow
         translationText.text = word;
         var random = new System.Random();
         correctOption = random.Next(0, 3);
-        List<string> optText = new() {"мама", "брат", "сестра"}; //get from db
-        optText.Insert(correctOption, word);
+        var randomWords = dbManager.serverData.Words
+                .Where(w => w.name != word)
+                .OrderBy(w => Guid.NewGuid())
+                .Take(3)
+                .Select(w => w.name)
+                .ToList();
+
+        randomWords.Insert(correctOption, word);
         for (int i = 0; i < options.Length; i++)
-            options[i].text = optText[i];
+            options[i].text = randomWords[i];
     }
 
     public void CheckAnswer(int button){
