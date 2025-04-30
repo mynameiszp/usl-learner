@@ -14,6 +14,8 @@ public class EnterTranslationGameplayWindow : BasicGameplayWindow
         handAnimation.gameObject.SetActive(true);
         failText.gameObject.SetActive(false);
         continueBut.gameObject.SetActive(false);
+        inputText.text = "";
+        enterButton.enabled = true;
 
         enterButton.onClick.AddListener(CheckAnswer);
     }

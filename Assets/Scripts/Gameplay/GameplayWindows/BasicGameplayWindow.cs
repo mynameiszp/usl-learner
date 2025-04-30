@@ -15,6 +15,7 @@ public class BasicGameplayWindow : MonoBehaviour
     protected string word;
 
     public void Initialize(int lvlNum, string word){
+        continueBut.onClick.RemoveAllListeners();
         lvlNumber.text = string.Format(lvlNumber.text, lvlNum);
         this.word = word;
         continueBut.onClick.AddListener(Continue);

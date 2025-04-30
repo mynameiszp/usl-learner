@@ -33,7 +33,7 @@ public class GameplayManager : MonoBehaviour
                 openedWindowId = 0;
             }
         }
-        else{
+        if(curWord == wordsForLevel.Count){
             windowManager.OpenWindow(WindowNames.MAIN_WINDOW);
             curWord = 0;
             openedWindowId = 0;
@@ -41,6 +41,7 @@ public class GameplayManager : MonoBehaviour
     }
 
     private void InitializeGameplayWindow(LevelConfig config, string word, BasicGameplayWindow window){
+        window.OnContinue -= TryOpenNextWindow;
         window.Initialize(config.levelNumber, word);
         window.OnContinue += TryOpenNextWindow;
         window.SetVisual();
