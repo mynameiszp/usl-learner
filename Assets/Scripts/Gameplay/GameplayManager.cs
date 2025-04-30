@@ -18,7 +18,7 @@ public class GameplayManager : MonoBehaviour
         {
             openedWindowId++;
             var window = windowManager.GetWindow(lvlConfig.windowIds[openedWindowId]).GetComponent<BasicGameplayWindow>();
-            InitializeGameplayWindow(window);
+            InitializeGameplayWindow(lvlConfig, window);
             windowManager.OpenWindow(lvlConfig.windowIds[openedWindowId]);
         }
         else{
@@ -26,8 +26,8 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
-    private void InitializeGameplayWindow(BasicGameplayWindow window){
-        window.Initialize("тато"); //change later
+    private void InitializeGameplayWindow(LevelConfig config, BasicGameplayWindow window){
+        window.Initialize(config.levelNumber, "тато"); //change later
         window.OnContinue += TryOpenNextWindow;
         window.SetVisual();
     }

@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.14248912}
   m_AnchorMax: {x: 1, y: 0.29949698}
-  m_AnchoredPosition: {x: -0.000061035156, y: -0.9391823}
+  m_AnchoredPosition: {x: -0.000061035156, y: -0.939209}
   m_SizeDelta: {x: 0.000061035, y: -4.271553}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6416434537807449351
@@ -401,6 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a08f3ae855a46e6a5b031a1bc08112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lvlNumber: {fileID: 2869033568980125765}
   translationText: {fileID: 4486679125496714985}
   handAnimation: {fileID: 0}
   continueBut: {fileID: 5330540618015204240}
@@ -513,7 +514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0440\u0456\u0432\u0435\u043D\u044C 1\n"
+  m_text: "\u0440\u0456\u0432\u0435\u043D\u044C {0}"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

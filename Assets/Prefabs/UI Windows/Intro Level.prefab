@@ -273,7 +273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0440\u0456\u0432\u0435\u043D\u044C 1\n"
+  m_text: "\u0440\u0456\u0432\u0435\u043D\u044C {0}\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -580,6 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e41863a1a0534626ae55265769aa727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lvlNumber: {fileID: 8000569010508453352}
   translationText: {fileID: 8580869144953691634}
   handAnimation: {fileID: 0}
   continueBut: {fileID: 6939550240525441514}

@@ -20,3 +20,8 @@ MonoBehaviour:
       - intro
       - buttons_trans
       - enter_trans
+    - levelNumber: 2
+      windowIds:
+      - intro
+      - buttons_trans
+      - enter_trans
