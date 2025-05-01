@@ -38,8 +38,8 @@ public class DatabaseManager : MonoBehaviour {
             {
                 PlayerData newPlayer = new() {
                     userid = userId,
-                    name = "Anastasiia",
-                    curlevel = 0,
+                    name = "Player1",
+                    curlevel = 1,
                     score = 0
                 };
                 string json = JsonUtility.ToJson(newPlayer);
@@ -59,11 +59,11 @@ public class DatabaseManager : MonoBehaviour {
     {
         if (data.level + 1 > playerData.curlevel)
             playerData.curlevel = data.level + 1;
-        playerData.score += serverData.Levels.Find(l => l.level == data.level).points;
-        UpdateUserData();
+        playerData.score += data.addScore;
+        UpdateUserStats();
     }
 
-    private void UpdateUserData()
+    private void UpdateUserStats()
     {
         var updateData = new PlayerStats { curlevel = playerData.curlevel, score = playerData.score };
         string jsonData = JsonUtility.ToJson(updateData);
@@ -71,12 +71,46 @@ public class DatabaseManager : MonoBehaviour {
 
         void OnSuccess(string response)
         {
-            Debug.Log("Changed player: " + response);
+            Debug.Log("Changed player stats: " + response);
         }
 
         void OnError(long code, string error)
         {
-            Debug.LogError("Failed to fetch players: " + error);
+            Debug.LogError("Failed to change player stats: " + error);
+        } 
+    }
+
+    public void UpdateUserName(string newName)
+    {
+        var updateData = new PlayerNameData { name = newName };
+        string jsonData = JsonUtility.ToJson(updateData);
+        apiManager.UpdatePlayerName(playerData.id, TableNames.PLAYERS_TABLE, jsonData, OnSuccess, OnError);  
+        playerData.name = newName;
+
+        void OnSuccess(string response)
+        {
+            Debug.Log("Changed player name: " + response);
+        }
+
+        void OnError(long code, string error)
+        {
+            Debug.LogError("Failed to change player name: " + error);
+        } 
+    }
+
+    public void DeletePlayer()
+    {
+        apiManager.Delete(playerData.id, TableNames.PLAYERS_TABLE, OnSuccess, OnError);  
+
+        void OnSuccess(string response)
+        {
+            Debug.Log("Deleted player: " + response);
+            Application.Quit();
+        }
+
+        void OnError(long code, string error)
+        {
+            Debug.LogError("Failed to delete player: " + error);
         } 
     }
 }
@@ -95,4 +129,10 @@ public class PlayerStats
 {
     public int curlevel;
     public int score;
+}
+
+[Serializable]
+public class PlayerNameData
+{
+    public string name;
 }

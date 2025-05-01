@@ -27,9 +27,14 @@ public class ApiClient : MonoBehaviour
         StartCoroutine(PostCoroutine(url, jsonData, onSuccess, onError));
     }
 
-    public void Put(string url, int id, string jsonData, Action<string> onSuccess, Action<long, string> onError)
+    public void Put(string url, string jsonData, Action<string> onSuccess, Action<long, string> onError)
     {
-        StartCoroutine(PutCoroutine($"{url}/{id}", jsonData, onSuccess, onError));
+        StartCoroutine(PutCoroutine($"{url}", jsonData, onSuccess, onError));
+    }
+
+    public void Delete(string url, int id, Action<string> onSuccess, Action<long, string> onError)
+    {
+        StartCoroutine(DeleteCoroutine($"{url}/{id}", onSuccess, onError));
     }
 
     private IEnumerator GetCoroutine(string url, Action<string> onSuccess, Action<long, string> onError)
@@ -75,5 +80,18 @@ public class ApiClient : MonoBehaviour
             onError?.Invoke(request.responseCode, request.downloadHandler.text);
         else
             onSuccess?.Invoke(request.downloadHandler.text);
+    }
+
+    private IEnumerator DeleteCoroutine(string url, Action<string> onSuccess, Action<long, string> onError)
+    {
+        using UnityWebRequest request = UnityWebRequest.Delete(url);
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
+            onError?.Invoke(request.responseCode, request.downloadHandler.text);
+        else
+            onSuccess?.Invoke(request.result.ToString());
     }
 }

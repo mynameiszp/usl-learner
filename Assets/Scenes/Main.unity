@@ -927,6 +927,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5648984266135481864, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
+      propertyPath: handAnimation
+      value: 
+      objectReference: {fileID: 1949538859}
     - target: {fileID: 5964352032066738348, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -937,6 +941,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5964352032066738348, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583258744490561253, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7632130853987813276, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}

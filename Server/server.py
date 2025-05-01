@@ -106,6 +106,18 @@ def update_player(id):
              (data['curlevel'], data['score'], id))
     return jsonify({"status": "player updated"}), 200
 
+@app.route('/players/<int:id>/name', methods=['PUT'])
+def update_player_name(id):
+    data = request.json
+    query_db("UPDATE players SET name = %s WHERE id = %s", (data['name'], id))
+    return jsonify({"status": "player name updated"}), 200
+
+# ---------------- DELETE ROUTES ---------------- #
+@app.route('/players/<int:id>', methods=['DELETE'])
+def delete_player(id):
+    query_db("DELETE FROM players WHERE id = %s", (id,))
+    return jsonify({"status": "player deleted"}), 200
+
 # ---------------- RUN SERVER ---------------- #
 
 if __name__ == '__main__':
