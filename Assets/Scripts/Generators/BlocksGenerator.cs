@@ -15,14 +15,19 @@ public class BlocksGenerator : MonoBehaviour, IGenerator
     [SerializeField] private Transform levelsParent;
     [SerializeField] private StartGame levelPrefab;
 
-    private List<LevelsGenerator> blocks;
+    private List<LevelsGenerator> blocks = new();
 
     public IEnumerator Generate()
     {
         while (dbManager.serverData.Dictionaries.Count == 0)
             yield return null;
 
-        blocks = new List<LevelsGenerator>();
+        foreach (var item in blocks){
+            item.GetComponent<Button>().onClick.RemoveAllListeners();
+            Destroy(item.gameObject);
+        }
+        blocks.Clear();
+
         var dictionaries = dbManager.serverData.Dictionaries;
 
         for (int i = 0; i < dictionaries.Count; i++)
@@ -37,5 +42,14 @@ public class BlocksGenerator : MonoBehaviour, IGenerator
 
     public void GenerateLevels(LevelsGenerator block){
         StartCoroutine(block.Generate());
+    }
+
+    void OnDestroy()
+    {
+        foreach (var item in blocks){
+            item.GetComponent<Button>().onClick.RemoveAllListeners();
+            Destroy(item.gameObject);
+        }
+        blocks.Clear();
     }
 }

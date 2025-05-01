@@ -28,6 +28,8 @@ public class DependencyInstaller : MonoInstaller
 
     [SerializeField]
     private DatabaseManager dbManager;
+    [SerializeField]
+    private GameWindowUI gameWindowUI;
 
     public override void InstallBindings()
     {
@@ -65,6 +67,10 @@ public class DependencyInstaller : MonoInstaller
 
         Container.Bind<BlocksGenerator>()
             .FromInstance(blocksGenerator)
+            .AsSingle();
+
+        Container.Bind<GameWindowUI>()
+            .FromInstance(gameWindowUI)
             .AsSingle();
     }
 }

@@ -5,7 +5,7 @@ using Zenject;
 
 public class ApiManager : MonoBehaviour
 {
-    private const string ServerIp = "https://4b02-93-170-44-43.ngrok-free.app";
+    private const string ServerIp = "https://53d6-93-170-44-43.ngrok-free.app";
     [Inject] private ApiClient apiClient;
 
     public void Fetch<T>(string table, Action<List<T>> onSuccess, Action<long, string> onError)
@@ -57,6 +57,11 @@ public class ApiManager : MonoBehaviour
             Debug.LogError($"Post failed: {code} + {error}");
             onError?.Invoke(code, error);
         }
+    }
+
+    public void UpdatePlayerStats(int id, string table, string jsonData, Action<string> onSuccess, Action<long, string> onError)
+    {
+        apiClient.Put($"{ServerIp}/{table}", id, jsonData, onSuccess, onError);
     }
 }
 

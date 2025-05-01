@@ -317,6 +317,7 @@ MonoBehaviour:
   apiClient: {fileID: 1856293932}
   apiManager: {fileID: 1856293933}
   dbManager: {fileID: 1856293931}
+  gameWindowUI: {fileID: 8856097383074982329}
 --- !u!4 &773646593
 Transform:
   m_ObjectHideFlags: 0
@@ -804,11 +805,7 @@ PrefabInstance:
       objectReference: {fileID: 1949538859}
     - target: {fileID: 1207948588105289280, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1276571041765396444, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
-      propertyPath: m_Size
-      value: 1
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 1364266047954894290, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -854,14 +851,6 @@ PrefabInstance:
       propertyPath: handAnimation
       value: 
       objectReference: {fileID: 1949538859}
-    - target: {fileID: 2033962213234851012, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -1501.5516
-      objectReference: {fileID: 0}
-    - target: {fileID: 2033962213234851012, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -750.7758
-      objectReference: {fileID: 0}
     - target: {fileID: 2103295357044948328, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -974,14 +963,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8163092073601090714, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
-      propertyPath: m_Padding.m_Top
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8163092073601090714, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
-      propertyPath: m_Padding.m_Bottom
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 8434677850219226826, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
       propertyPath: handAnimation
       value: 
@@ -1003,6 +984,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
+--- !u!114 &8856097383074982329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1866701929989184402, guid: d4ac9734952b5432dbb0d83defe6c8f9, type: 3}
+  m_PrefabInstance: {fileID: 7507873346575111775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4148a4a49cc764a97b26d0469d47ee37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -11,9 +11,11 @@ public class ChooseTranslationGameplayWindow : BasicGameplayWindow
     [SerializeField] private GameObject buttons;
     [Inject] private readonly DatabaseManager dbManager;
     private int correctOption;
+    private bool isCorrectFirstTime = true;
 
     public override void SetVisual()
     {
+        isCorrectFirstTime = true;
         continueBut.gameObject.SetActive(false);
         translationText.gameObject.SetActive(false);
         failText.gameObject.SetActive(false);
@@ -42,12 +44,14 @@ public class ChooseTranslationGameplayWindow : BasicGameplayWindow
             continueBut.gameObject.SetActive(true);
             translationText.gameObject.SetActive(true);
         }
-        else
+        else{
             failText.gameObject.SetActive(true);
+            isCorrectFirstTime = false;
+        }
     }
 
-    public override void OnAnswerCorrect()
-    {
-        base.OnAnswerCorrect();
+    public override void Continue(){
+        OnContinue?.Invoke(isCorrectFirstTime);
+        isCorrectFirstTime = true;
     }
 }

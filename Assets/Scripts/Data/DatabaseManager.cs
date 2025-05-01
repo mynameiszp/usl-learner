@@ -7,10 +7,12 @@ public class DatabaseManager : MonoBehaviour {
     public ServerData serverData = new();
     public PlayerData playerData;
     [Inject] private ApiManager apiManager;
+    [Inject] private GameplayManager gameplayManager;
 
     private void Awake() {
         GetServerData();
         GetUserData();
+        gameplayManager.OnLevelWin += IncreasePlayerLevel;
     }
 
     private void GetServerData()
@@ -52,6 +54,31 @@ public class DatabaseManager : MonoBehaviour {
             apiManager.GetByUserId(TableNames.PLAYERS_TABLE, userId, data => playerData = JsonUtilityWrapper.FromJsonSingle<PlayerData>(data), OnError);   
         } 
     }
+
+    private void IncreasePlayerLevel(LevelFinishedData data)
+    {
+        if (data.level + 1 > playerData.curlevel)
+            playerData.curlevel = data.level + 1;
+        playerData.score += serverData.Levels.Find(l => l.level == data.level).points;
+        UpdateUserData();
+    }
+
+    private void UpdateUserData()
+    {
+        var updateData = new PlayerStats { curlevel = playerData.curlevel, score = playerData.score };
+        string jsonData = JsonUtility.ToJson(updateData);
+        apiManager.UpdatePlayerStats(playerData.id, TableNames.PLAYERS_TABLE, jsonData, OnSuccess, OnError);  
+
+        void OnSuccess(string response)
+        {
+            Debug.Log("Changed player: " + response);
+        }
+
+        void OnError(long code, string error)
+        {
+            Debug.LogError("Failed to fetch players: " + error);
+        } 
+    }
 }
 
 [Serializable]
@@ -61,4 +88,11 @@ public class ServerData
     public List<WordData> Words;
     public List<LevelData> Levels;
     public List<LevelWordData> LevelWords;
+}
+
+[Serializable]
+public class PlayerStats
+{
+    public int curlevel;
+    public int score;
 }

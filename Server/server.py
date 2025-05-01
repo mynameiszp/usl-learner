@@ -97,6 +97,15 @@ def add_level_word():
              (data['levelid'], data['wordid']))
     return jsonify({"status": "level-word link added"}), 201
 
+# ---------------- PUT ROUTES ---------------- #
+
+@app.route('/players/<int:id>', methods=['PUT'])
+def update_player(id):
+    data = request.json
+    query_db("UPDATE players SET curlevel = %s, score = %s WHERE id = %s",
+             (data['curlevel'], data['score'], id))
+    return jsonify({"status": "player updated"}), 200
+
 # ---------------- RUN SERVER ---------------- #
 
 if __name__ == '__main__':

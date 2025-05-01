@@ -7,6 +7,10 @@ public class GameWindowUI : MonoBehaviour
 
     void Start()
     {
+        Generate();
+    }
+
+    public void Generate(){
         StartCoroutine(blocksGenerator.Generate());
     }
 }

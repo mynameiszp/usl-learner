@@ -6,7 +6,7 @@ using System;
 
 public class BasicGameplayWindow : MonoBehaviour
 {
-    public Action OnContinue;
+    public Action<bool> OnContinue;
     [SerializeField] protected TMP_Text lvlNumber;
     [SerializeField] protected string lvlFormatText;
     [SerializeField] protected TMP_Text translationText;
@@ -28,9 +28,7 @@ public class BasicGameplayWindow : MonoBehaviour
         handAnimation.gameObject.SetActive(true);
     }
 
-    public virtual void OnAnswerCorrect(){}
-
-    public void Continue(){
-        OnContinue?.Invoke();
+    public virtual void Continue(){
+        OnContinue?.Invoke(true);
     }
 }

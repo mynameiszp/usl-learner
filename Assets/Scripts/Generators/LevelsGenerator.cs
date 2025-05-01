@@ -38,4 +38,12 @@ public class LevelsGenerator : MonoBehaviour, IGenerator
         }
         yield break;
     }
+
+    void OnDestroy()
+    {
+        foreach (var item in levels){
+            Destroy(item.gameObject);
+        }
+        levels.Clear();
+    }
 }
