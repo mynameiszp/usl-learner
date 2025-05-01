@@ -242,6 +242,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNum: {fileID: 3817953088048869939}
+  background: {fileID: 3946665285772148527}
+  availableIcon: {fileID: 21300000, guid: 5e1e77662aea1fd4cb16c6d627d08e24, type: 3}
+  notAvailableIcon: {fileID: 21300000, guid: 7255a10d6e8bc7a4599e29d44855bf26, type: 3}
 --- !u!1 &8217035202065346049
 GameObject:
   m_ObjectHideFlags: 0

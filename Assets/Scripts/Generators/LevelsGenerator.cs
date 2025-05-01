@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using TMPro;
+using System.Collections;
 
 public class LevelsGenerator : MonoBehaviour, IGenerator
 {
@@ -22,7 +23,7 @@ public class LevelsGenerator : MonoBehaviour, IGenerator
         levelPrefab = prefab;
     }
 
-    public void Generate()
+    public IEnumerator Generate()
     {
         foreach (var item in levels){
             Destroy(item.gameObject);
@@ -35,5 +36,6 @@ public class LevelsGenerator : MonoBehaviour, IGenerator
             lvlObj.Initialize(item);
             levels.Add(lvlObj);
         }
+        yield break;
     }
 }

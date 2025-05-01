@@ -8,6 +8,7 @@ public class BasicGameplayWindow : MonoBehaviour
 {
     public Action OnContinue;
     [SerializeField] protected TMP_Text lvlNumber;
+    [SerializeField] protected string lvlFormatText;
     [SerializeField] protected TMP_Text translationText;
     [SerializeField] protected SkeletonAnimation handAnimation;
     [SerializeField] protected Button continueBut;
@@ -16,7 +17,7 @@ public class BasicGameplayWindow : MonoBehaviour
 
     public void Initialize(int lvlNum, string word){
         continueBut.onClick.RemoveAllListeners();
-        lvlNumber.text = string.Format(lvlNumber.text, lvlNum);
+        lvlNumber.text = string.Format(lvlFormatText, lvlNum);
         this.word = word;
         continueBut.onClick.AddListener(Continue);
     }

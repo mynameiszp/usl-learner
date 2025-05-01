@@ -1161,6 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lvlNumber: {fileID: 1410313094715856325}
+  lvlFormatText: "\u0440\u0456\u0432\u0435\u043D\u044C {0}"
   translationText: {fileID: 0}
   handAnimation: {fileID: 0}
   continueBut: {fileID: 6187863587433909539}

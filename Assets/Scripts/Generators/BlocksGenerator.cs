@@ -2,6 +2,7 @@ using Zenject;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Collections;
 
 public class BlocksGenerator : MonoBehaviour, IGenerator
 {
@@ -16,8 +17,11 @@ public class BlocksGenerator : MonoBehaviour, IGenerator
 
     private List<LevelsGenerator> blocks;
 
-    public void Generate()
+    public IEnumerator Generate()
     {
+        while (dbManager.serverData.Dictionaries.Count == 0)
+            yield return null;
+
         blocks = new List<LevelsGenerator>();
         var dictionaries = dbManager.serverData.Dictionaries;
 
@@ -32,6 +36,6 @@ public class BlocksGenerator : MonoBehaviour, IGenerator
     }
 
     public void GenerateLevels(LevelsGenerator block){
-        block.Generate();
+        StartCoroutine(block.Generate());
     }
 }

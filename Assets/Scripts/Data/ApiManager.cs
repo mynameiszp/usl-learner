@@ -5,7 +5,7 @@ using Zenject;
 
 public class ApiManager : MonoBehaviour
 {
-    private const string ServerIp = "https://eaab-93-170-44-43.ngrok-free.app";
+    private const string ServerIp = "https://4b02-93-170-44-43.ngrok-free.app";
     [Inject] private ApiClient apiClient;
 
     public void Fetch<T>(string table, Action<List<T>> onSuccess, Action<long, string> onError)
