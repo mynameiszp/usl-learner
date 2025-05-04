@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelSettings : ScriptableObject
 {
     public List<BlockConfig> blockConfigs;
+    public LevelConfig repeatLevel;
 }
 
 [Serializable]

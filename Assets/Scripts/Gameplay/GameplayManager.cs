@@ -24,12 +24,12 @@ public class GameplayManager : MonoBehaviour
         TryOpenNextWindow();
     }
 
-    public void ProcessResult(bool isCorrect){
+    private void ProcessResult(bool isCorrect){
         score -= isCorrect? 0: (levelData.points / lvlConfig.windowIds.Count);
         TryOpenNextWindow();
     }
 
-    public void TryOpenNextWindow(){
+    private void TryOpenNextWindow(){
         if(curWord < wordsForLevel.Count){
             if (openedWindowId < lvlConfig.windowIds.Count)
             {

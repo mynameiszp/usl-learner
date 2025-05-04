@@ -41,6 +41,10 @@ public class LevelsGenerator : MonoBehaviour, IGenerator
 
     void OnDestroy()
     {
+        DestroyLevels();
+    }
+
+    public void DestroyLevels(){
         foreach (var item in levels){
             Destroy(item.gameObject);
         }

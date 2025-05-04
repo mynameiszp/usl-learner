@@ -30,6 +30,8 @@ public class DependencyInstaller : MonoInstaller
     private DatabaseManager dbManager;
     [SerializeField]
     private GameWindowUI gameWindowUI;
+    [SerializeField]
+    private RepeatWordsProcessor repeatWordsProcessor;
 
     public override void InstallBindings()
     {
@@ -71,6 +73,10 @@ public class DependencyInstaller : MonoInstaller
 
         Container.Bind<GameWindowUI>()
             .FromInstance(gameWindowUI)
+            .AsSingle();
+
+        Container.Bind<RepeatWordsProcessor>()
+            .FromInstance(repeatWordsProcessor)
             .AsSingle();
     }
 }

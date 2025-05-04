@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ProfileVisual : MonoBehaviour
 {
     [Inject] private DatabaseManager databaseManager;
+    [Inject] private RepeatWordsProcessor repeatWordsProcessor;
     [SerializeField] private TMP_InputField nameInput;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private TMP_Text scoreText;
@@ -24,5 +25,10 @@ public class ProfileVisual : MonoBehaviour
 
     public void DeleteAccount(){
         databaseManager.DeletePlayer();
+    }
+
+    public void RepeatWords(){
+        var data = databaseManager.playerData;
+        repeatWordsProcessor.StartRepeat(data.curlevel);
     }
 }

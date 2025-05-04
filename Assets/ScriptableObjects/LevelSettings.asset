@@ -25,3 +25,54 @@ MonoBehaviour:
       - intro
       - buttons_trans
       - enter_trans
+    - levelNumber: 3
+      windowIds:
+      - intro
+      - buttons_trans
+      - enter_trans
+    - levelNumber: 4
+      windowIds:
+      - intro
+      - buttons_trans
+      - enter_trans
+    - levelNumber: 5
+      windowIds:
+      - intro
+      - buttons_trans
+      - enter_trans
+    - levelNumber: 6
+      windowIds:
+      - intro
+      - enter_trans
+      - buttons_trans
+  - blockNumber: 2
+    levelConfigs:
+    - levelNumber: 7
+      windowIds:
+      - intro
+      - buttons_trans
+      - enter_trans
+    - levelNumber: 8
+      windowIds:
+      - intro
+      - buttons_trans
+      - enter_trans
+    - levelNumber: 9
+      windowIds:
+      - intro
+      - buttons_trans
+      - enter_trans
+    - levelNumber: 10
+      windowIds:
+      - intro
+      - enter_trans
+      - buttons_trans
+    - levelNumber: 11
+      windowIds:
+      - intro
+      - buttons_trans
+      - enter_trans
+  repeatLevel:
+    levelNumber: 0
+    windowIds:
+    - intro

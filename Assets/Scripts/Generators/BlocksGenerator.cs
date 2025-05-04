@@ -41,6 +41,7 @@ public class BlocksGenerator : MonoBehaviour, IGenerator
     }
 
     public void GenerateLevels(LevelsGenerator block){
+        DestroyLevels();
         StartCoroutine(block.Generate());
     }
 
@@ -51,5 +52,11 @@ public class BlocksGenerator : MonoBehaviour, IGenerator
             Destroy(item.gameObject);
         }
         blocks.Clear();
+    }
+
+    private void DestroyLevels(){
+        foreach (var item in blocks){
+            item.DestroyLevels();
+        }
     }
 }
