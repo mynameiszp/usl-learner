@@ -13,7 +13,7 @@ public class LevelsGenerator : MonoBehaviour, IGenerator
     private Transform parent;
     private StartGame levelPrefab;
     private List<StartGame> levels = new();
-    public int blockId;
+    private int blockId;
 
     public void Initialize(int blockId, string blockName, Transform parent, StartGame prefab)
     {

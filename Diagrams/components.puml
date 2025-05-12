@@ -1,0 +1,38 @@
+@startuml ComponentDiagram
+' Заголовок
+title Діаграма компонентів інформаційної системи вивчення жестової мови
+left to right direction
+
+' --- Unity Client ---
+package "Мобільний додаток" {
+  [UI Module]
+  [Animation Handler]
+  [Game Logic Module]
+  [API Client]
+}
+
+' --- Flask Server ---
+package "Сервер" {
+  [REST API Module]
+  [Database Access Layer (DAL)]
+  [ORM Admin]
+}
+
+' --- PostgreSQL (внизу) ---
+database "База даних" as DB #DDDDDD {
+}
+
+' Внутрішні взаємозв’язки Unity
+[UI Module] --> [Game Logic Module]
+[Game Logic Module] --> [Animation Handler]
+[Game Logic Module] --> [API Client]
+
+' Взаємодія клієнт-сервер
+[API Client] --> [REST API Module] : HTTP/REST
+
+' Взаємозв’язки серверу
+[REST API Module] --> [Database Access Layer (DAL)]
+[Database Access Layer (DAL)] --> DB
+[ORM Admin] --> DB
+
+@enduml

@@ -1,0 +1,244 @@
+@startuml classMain
+
+package "Generation" {
+interface IGenerator {
++Generate(): IEnumerator
+}
+
+class BlocksGenerator {
++blocks: List<LevelsGenerator>
++Generate(): IEnumerator
++GenerateLevels(): void
+}
+
+class LevelsGenerator {
++levelConfig: LevelSettings
++Generate(): IEnumerator
++Initialize(): void
+}
+
+class LevelSettings {
++blockConfigs: List<BlockConfig>
++repeatLevel: LevelConfig
+}
+
+class BlockConfig{
++blockNumber: int
++levelConfigs: List<LevelConfig>
+}
+
+class LevelConfig{
++levelNumber: int
++windowIds: List<string>
+}
+}
+
+LevelsGenerator ..|> IGenerator
+BlocksGenerator ..|> IGenerator
+
+LevelSettings o--> BlockConfig
+BlockConfig o--> LevelConfig
+LevelsGenerator o--> LevelSettings
+
+package "Gameplay" {
+class BasicGameplayWindow {
++OnContinue: Action<bool>
++word: String
++Initialize(): void
++SetVisual(): void
++Continue(): void
+}
+
+class ChooseTranslationGameplayWindow {
++CheckAnswer(): void
++SetVisual(): void
++Continue(): void
+}
+
+class EnterTranslationGameplayWindow {
++CheckAnswer(): void
++SetVisual(): void
++Continue(): void
+}
+class UIWindowManager {
++windows: List<WindowData>
++OpenWindow(): void
++GetWindow(): void
+}
+
+class WindowData {
++window: GameObject
++id: String
+}
+
+class LevelFinishedData {
++level: int
++addScore: int
+}
+
+class GameplayManager {
++OnLevelWin: Action<LevelFinishedData>
++windowManager: UIWindowManager
++StartLevel(): void
++TryOpenNextWindow(): void
++InitializeGameplayWindow(): void
++ProcessResult(): void
+}
+}
+
+EnterTranslationGameplayWindow --|> BasicGameplayWindow
+ChooseTranslationGameplayWindow --|> BasicGameplayWindow
+
+GameplayManager --> LevelFinishedData
+GameplayManager --> UIWindowManager
+UIWindowManager --> WindowData
+WindowData --> BasicGameplayWindow
+
+package "Translations" {
+class GoogleTranslateService {
++TranslateText(): void
++GetSupportedLanguages(): void
++FetchSupportedLanguages(): IEnumerator
++SendTranslationRequest(): IEnumerator
+}
+
+class Language
+{
++language: String
++name: String
+}
+
+class Data {
++languages: Language\[]
+}
+
+class LanguageList {
++data: Data
+}
+
+class TranslationRequest
+{
++q: String
++target: String
++source: String
+}
+
+class Translation
+{
++translatedText: String
+}
+
+class TranslationData
+{
++translations: Translation\[]
+}
+
+class TranslationResponse
+{
++data: TranslationData
+}
+}
+
+LanguageList --> Data
+Data --> Language
+
+TranslationResponse --> TranslationData
+TranslationData --> Translation
+
+GoogleTranslateService ..> TranslationResponse
+GoogleTranslateService ..> TranslationRequest
+GoogleTranslateService ..> LanguageList
+
+package "Database"{
+
+class DatabaseManager {
++serverData: ServerData
++playerData: PlayerData
++apiManager: ApiManager
++GetServerData(): void
++GetUserData(): void
++IncreasePlayerLevel(): void
++UpdateUserStats(): void
++UpdateUserName(): void
+}
+
+class ServerData {
++Dictionaries: List<DictionaryData>
++Words: List<WordData>
++Levels: List<LevelData>
++LevelWords: List<LevelWordData>
+}
+
+class PlayerStats {
++curlevel: int
++score: int
+}
+
+class PlayerNameData {
++name: String
+}
+
+class ApiManager {
++apiClient: ApiClient
++Fetch<T>(): void
++Post<T>(): void
++GetByUserId(): void
++UpdatePlayerStats(): void
++UpdatePlayerName(): void
++Delete(): void
+}
+
+class ApiClient {
++Get(): void
++GetById(): void
++GetByUserId(): void
++Post(): void
++Put(): void
++Delete(): void
+}
+
+class DictionaryData {
++id: int
++name: String
+}
+
+class LevelData {
++id: int
++level: int
++points: int
+}
+
+class WordData {
++id: int
++name: String
++dictionaryid: int
+}
+
+class PlayerData {
++id: int
++userid: String
++name: String
++curlevel: int
++score: int
+}
+
+class LevelWordData {
++id: int
++levelid: int
++wordid: int
+}
+}
+
+ApiManager --> ApiClient
+DatabaseManager --> ApiManager
+DatabaseManager --> ServerData
+DatabaseManager --> PlayerData
+DatabaseManager ..> PlayerStats
+DatabaseManager ..> PlayerNameData
+
+ServerData --> DictionaryData
+ServerData --> WordData
+ServerData --> LevelData
+ServerData --> LevelWordData
+
+@enduml

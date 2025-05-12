@@ -1,0 +1,68 @@
+@startuml SequenceDiagram
+title Діаграма послідовностей
+
+actor Користувач
+participant "Unity Client\n(Мобільний додаток)" as Unity
+participant "REST API\n(Flask Server)" as API
+participant "Database Access Layer\n(DAL)" as DAL
+database "PostgreSQL" as DB
+
+Користувач -> Unity : Запускає додаток
+Unity -> API : GET /players
+Unity -> API : GET /levels
+Unity -> API : GET /words
+Unity -> API : GET /dictionaries
+Unity -> API : GET /levelsWords
+API -> DAL : Отримати дані
+DAL -> DB : SELECT * FROM...
+DB --> DAL : Дані з бази даних
+DAL --> API : Дані для застосунку
+API --> Unity : JSON з даними
+
+loop При вході
+  alt користувач новий
+    Unity -> API : POST /players
+    API -> DAL : Створити користувача
+    DAL -> DB : INSERT INTO players ...
+    DB --> DAL
+    DAL --> API
+    API --> Unity : OK
+end
+
+Unity -> Користувач : Відображення тем та рівнів
+
+
+Користувач -> Unity : Почати рівень
+Unity -> Користувач : Відображення рівня
+
+Користувач -> Unity : Завершити рівень
+Unity -> API : PUT /players/{id}
+API -> DAL : Оновити дані
+DAL -> DB : UPDATE players SET ...
+DB --> DAL
+DAL --> API
+API --> Unity : OK
+Unity -> Користувач : Показ підсумків рівня
+
+Користувач -> Unity : Ввести слово для пошуку жесту
+Unity -> Користувач : Відображення обраного жесту
+
+Користувач -> Unity : Змінити імʼя
+Unity -> API : PUT /players/{id}/name
+API -> DAL : Оновити дані
+DAL -> DB : UPDATE players SET ...
+DB --> DAL
+DAL --> API
+API --> Unity : OK
+Unity -> Користувач : Відображення нового імені
+
+Користувач -> Unity : Видалити профіль
+Unity -> API : DELETE /players/{id}
+API -> DAL : Видалити дані
+DAL -> DB : DELETE FROM players WHERE id = ...
+DB --> DAL
+DAL --> API
+API --> Unity : OK
+Unity -> Користувач : Завершення сесії
+
+@enduml
